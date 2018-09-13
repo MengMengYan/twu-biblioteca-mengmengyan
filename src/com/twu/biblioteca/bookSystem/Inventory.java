@@ -18,4 +18,12 @@ public class Inventory {
 
         return bookList.trim();
     }
+
+    public String checkout(String title) {
+        if(books.containsKey(title)) {
+            books.remove(title);
+            return "Thank you! Enjoy the book";
+        }
+        return "";
+    }
 }

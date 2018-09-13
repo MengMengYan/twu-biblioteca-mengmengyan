@@ -6,8 +6,13 @@ import static org.junit.Assert.assertEquals;
 public class MenuTest {
 
     @Test
-    public void welcomeUserTest() {
+    public void testWelcomeUser() {
         Menu menu = new Menu();
         assertEquals("Welcome to Biblioteca", menu.welcomeUser());
+    }
+
+    @Test
+    public void testGetBookList() {
+
     }
 }
