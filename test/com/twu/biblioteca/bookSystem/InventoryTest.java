@@ -48,4 +48,10 @@ public class InventoryTest {
         assertEquals("Title1\t|\tAuthor1\t|\t2042\nTitle2\t|\tAuthor2\t|\t1098", inventory.getBookList());
     }
 
+    @Test
+    public void testSuccessfulReturn() {
+        inventory.checkout("Title1");
+        assertEquals("Thank you for returning the book", inventory.checkin("Title1"));
+    }
+
 }

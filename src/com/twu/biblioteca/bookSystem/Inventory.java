@@ -29,7 +29,11 @@ public class Inventory {
         return "That book is not available";
     }
 
-    public void checkin(String title) {
-        this.availableBooks.put(title, completeBooks.get(title));
+    public String checkin(String title) {
+        if(completeBooks.containsKey(title)) {
+            this.availableBooks.put(title, completeBooks.get(title));
+            return "Thank you for returning the book";
+        }
+        return "";
     }
 }
