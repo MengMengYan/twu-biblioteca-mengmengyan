@@ -34,6 +34,6 @@ public class Inventory {
             this.availableBooks.put(title, completeBooks.get(title));
             return "Thank you for returning the book";
         }
-        return "";
+        return "That is not a valid book to return";
     }
 }

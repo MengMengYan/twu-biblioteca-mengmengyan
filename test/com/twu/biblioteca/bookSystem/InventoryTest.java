@@ -54,4 +54,9 @@ public class InventoryTest {
         assertEquals("Thank you for returning the book", inventory.checkin("Title1"));
     }
 
+    @Test
+    public void testUnsuccessfulReturn() {
+        assertEquals("That is not a valid book to return", inventory.checkin("Title"));
+    }
+
 }
