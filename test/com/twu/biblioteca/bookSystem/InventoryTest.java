@@ -36,4 +36,16 @@ public class InventoryTest {
         assertEquals("Thank you! Enjoy the book", inventory.checkout("Title1"));
     }
 
+    @Test
+    public void testUnsuccessfulCheckout() {
+        assertEquals("That book is not available", inventory.checkout("Title3"));
+    }
+
+    @Test
+    public void testCheckinLibrarianPerspectivet() {
+        inventory.checkout("Title1");
+        inventory.checkin("Title1");
+        assertEquals("Title1\t|\tAuthor1\t|\t2042\nTitle2\t|\tAuthor2\t|\t1098", inventory.getBookList());
+    }
+
 }

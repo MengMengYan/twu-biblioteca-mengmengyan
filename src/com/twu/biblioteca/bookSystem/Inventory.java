@@ -3,16 +3,18 @@ package com.twu.biblioteca.bookSystem;
 import java.util.HashMap;
 
 public class Inventory {
-    HashMap<String,Book> books;
+    HashMap<String,Book> availableBooks;
+    HashMap<String,Book> completeBooks;
 
     public Inventory(HashMap<String,Book> books) {
-        this.books = books;
+        this.availableBooks = books;
+        this.completeBooks = (HashMap<String,Book>)books.clone();
     }
 
 
     public Object getBookList() {
         String bookList = "";
-        for(Book book : books.values()) {
+        for(Book book : availableBooks.values()) {
             bookList += book.getDetails() + "\n";
         }
 
@@ -20,10 +22,14 @@ public class Inventory {
     }
 
     public String checkout(String title) {
-        if(books.containsKey(title)) {
-            books.remove(title);
+        if(availableBooks.containsKey(title)) {
+            availableBooks.remove(title);
             return "Thank you! Enjoy the book";
         }
-        return "";
+        return "That book is not available";
+    }
+
+    public void checkin(String title) {
+        this.availableBooks.put(title, completeBooks.get(title));
     }
 }
