@@ -22,12 +22,12 @@ public class InventoryTest {
 
     @Test
     public void testSuccessfulCheckout() {
-        assertEquals("Thank you! Enjoy the book", inventory.checkout("Title1"));
+        assertEquals(true, inventory.checkout("Title1"));
     }
 
     @Test
     public void testUnsuccessfulCheckout() {
-        assertEquals("That book is not available", inventory.checkout("Title3"));
+        assertEquals(false, inventory.checkout("Title3"));
     }
 
     @Test

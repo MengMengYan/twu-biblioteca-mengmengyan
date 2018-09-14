@@ -38,4 +38,9 @@ public class CheckoutBookCommandTest {
         assertEquals("Thank you! Enjoy the book", testee.execute(inventory, "Title1"));
     }
 
+    @Test
+    public void checkoutUnsuccessfully() {
+        assertEquals("That book is not available", testee.execute(inventory, "Title3"));
+    }
+
 }

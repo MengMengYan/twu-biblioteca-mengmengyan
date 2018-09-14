@@ -9,6 +9,6 @@ public class CheckoutBookCommand implements Command {
         if (checkedOut) {
             return "Thank you! Enjoy the book";
         }
-        return "";
+        return "That book is not available";
     }
 }
