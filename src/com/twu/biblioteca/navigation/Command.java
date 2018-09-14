@@ -1,5 +1,7 @@
 package com.twu.biblioteca.navigation;
 
+import com.twu.biblioteca.bookSystem.Inventory;
+
 public interface Command {
-    String execute();
+    String execute(Inventory inventory);
 }

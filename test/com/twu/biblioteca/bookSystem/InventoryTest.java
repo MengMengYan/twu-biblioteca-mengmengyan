@@ -21,17 +21,6 @@ public class InventoryTest {
     }
 
     @Test
-    public void testInventory() {
-        assertEquals("Title1\t|\tAuthor1\t|\t2042\nTitle2\t|\tAuthor2\t|\t1098", inventory.getBookList());
-    }
-
-    @Test
-    public void testCheckoutLibrarianPerspective() {
-        inventory.checkout("Title1");
-        assertEquals("Title2\t|\tAuthor2\t|\t1098", inventory.getBookList());
-    }
-
-    @Test
     public void testSuccessfulCheckout() {
         assertEquals("Thank you! Enjoy the book", inventory.checkout("Title1"));
     }
@@ -39,13 +28,6 @@ public class InventoryTest {
     @Test
     public void testUnsuccessfulCheckout() {
         assertEquals("That book is not available", inventory.checkout("Title3"));
-    }
-
-    @Test
-    public void testCheckinLibrarianPerspectivet() {
-        inventory.checkout("Title1");
-        inventory.checkin("Title1");
-        assertEquals("Title1\t|\tAuthor1\t|\t2042\nTitle2\t|\tAuthor2\t|\t1098", inventory.getBookList());
     }
 
     @Test

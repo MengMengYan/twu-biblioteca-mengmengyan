@@ -9,12 +9,12 @@ public class MenuCommandTest {
     private Command testee;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         this.testee = new MenuCommand();
     }
 
     @Test
-    public void shouldExecuteByGivingEmptyString() {
-        assertEquals("Menu - Opens menu\tQuit - Quits Biblioteca", this.testee.execute());
+    public void shouldReturnMenu() {
+        assertEquals("Menu - Opens menu\tList Books - Lists all available books\tQuit - Quits Biblioteca", this.testee.execute(null));
     }
 }

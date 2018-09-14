@@ -9,12 +9,12 @@ public class QuitCommandTest {
     private Command testee;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         this.testee = new QuitCommand();
     }
 
     @Test
-    public void shouldExecuteByGivingEmptyString() {
-        assertEquals("See you again", this.testee.execute());
+    public void shouldReturnByeMessage() {
+        assertEquals("See you again", this.testee.execute(null));
     }
 }
