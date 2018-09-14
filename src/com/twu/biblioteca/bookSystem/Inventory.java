@@ -12,7 +12,7 @@ public class Inventory {
     }
 
 
-    public Object getBookList() {
+    public String getBookList() {
         String bookList = "";
         for(Book book : availableBooks.values()) {
             bookList += book.getDetails() + "\n";

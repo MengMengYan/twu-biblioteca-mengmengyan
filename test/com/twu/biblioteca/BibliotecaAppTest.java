@@ -38,6 +38,7 @@ public class BibliotecaAppTest {
             e.printStackTrace();
         }
 
-        assertEquals("Welcome to Biblioteca\nSee you again", outContent.toString().trim());
+        assertEquals("Welcome to Biblioteca\nMenu - Opens menu\tQuit - Quits Biblioteca\nSee you again", outContent.toString().trim());
+
     }
 }

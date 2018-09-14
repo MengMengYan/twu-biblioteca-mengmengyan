@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.navigation.Command;
 import com.twu.biblioteca.navigation.Menu;
+import com.twu.biblioteca.navigation.MenuCommand;
 import com.twu.biblioteca.navigation.QuitCommand;
 
 import java.util.Scanner;
@@ -13,15 +14,18 @@ public class BibliotecaApp {
         boolean continueRunning = true;
         Menu menu = new Menu();
         System.out.println(menu.welcomeUser());
-        Command command;
+        Command command = new MenuCommand();
+        System.out.println(command.execute());
 
         while (continueRunning) {
-
-            if (getStringInput().equals("Quit")) {
+            String input = getStringInput();
+            if (input.equals("Quit")) {
                 continueRunning = false;
                 command = new QuitCommand();
-                System.out.println(command.execute());
+            } else {
+                command = new MenuCommand();
             }
+            System.out.println(command.execute());
         }
     }
 
