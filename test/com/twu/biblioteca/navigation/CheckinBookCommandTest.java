@@ -10,13 +10,13 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class ListBookCommandTest {
+public class CheckinBookCommandTest {
     private Command testee;
     private Inventory inventory;
 
     @Before
     public void setUp() {
-        this.testee = new ListBookCommand();
+        this.testee = new CheckoutBookCommand();
 
         Map<String, Book> books = new HashMap<String, Book>();
         Book book1 = new Book("Title1", "Author1", 2042);
@@ -24,18 +24,16 @@ public class ListBookCommandTest {
         books.put("Title1", book1);
         books.put("Title2", book2);
         inventory = new Inventory(books);
+
+        testee.execute(inventory, "Title1");
+        testee = new CheckinBookCommand();
     }
 
     @Test
-    public void shouldListNBooks() {
+    public void checkinBookLibrarianView() {
+        testee.execute(inventory, "Title1");
+        testee = new ListBookCommand();
         assertEquals("Title1\t|\tAuthor1\t|\t2042\n" +
                 "Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null));
-    }
-
-    @Test
-    public void shouldListNoBooks() {
-        Map<String, Book> noBooks = new HashMap<>();
-        this.inventory = new Inventory(noBooks);
-        assertEquals("No Book available", this.testee.execute(this.inventory, null));
     }
 }
