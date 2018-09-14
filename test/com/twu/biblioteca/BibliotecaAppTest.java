@@ -4,6 +4,7 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -19,9 +20,27 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void testWelcomeMessage(){
-        BibliotecaApp.main(new String[]{});
-        assertEquals("Welcome to Biblioteca", outContent.toString().trim());
+    public void testUserFlow() {
+        Thread threadStartingMain = new Thread() {
+            public void run() {
+                BibliotecaApp.main(new String[]{});
+            }
+        };
+
+        ByteArrayInputStream in = new ByteArrayInputStream("Quit".getBytes());
+        System.setIn(in);
+
+        threadStartingMain.start();
+
+        try {
+            threadStartingMain.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        assertEquals("Welcome to Biblioteca\nSee you again", outContent.toString().trim());
     }
+
+
 
 }
