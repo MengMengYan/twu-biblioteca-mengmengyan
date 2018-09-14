@@ -24,22 +24,38 @@ public class BibliotecaApp {
         while (continueRunning) {
             String input = getStringInput(in);
 
+            String possibleBookInput = checkForCheckinOrOut(input);
             command = create(input);
 
             if (command.getClass().equals(QuitCommand.class)) {
                 continueRunning = false;
             }
-            System.out.println(command.execute(inventory, null));
+            System.out.println(command.execute(inventory, possibleBookInput.trim()));
         }
     }
 
+    static String checkForCheckinOrOut(String input) {
+        if (input.contains("check")) {
+            String[] singleInputs = input.split("\\s+");
+            if (singleInputs.length > 1) {
+                return singleInputs[1];
+            }
+        }
+        return "";
+    }
+
     static Command create(String input) {
-        if (input.equals("Quit")) {
+
+        if (input.toLowerCase().contains("quit")) {
             return new QuitCommand();
-        } else if (input.equals("List Books")) {
+        } else if (input.toLowerCase().contains("list books")) {
             return new ListBookCommand();
-        } else if (input.equals("Menu")) {
+        } else if (input.toLowerCase().contains("menu")) {
             return new MenuCommand();
+        } else if (input.toLowerCase().contains("checkout")) {
+            return new CheckoutBookCommand();
+        } else if (input.toLowerCase().contains("checkin")) {
+            return new CheckinBookCommand();
         } else {
             return new InvalidCommand();
         }

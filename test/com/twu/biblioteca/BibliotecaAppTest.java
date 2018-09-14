@@ -35,4 +35,28 @@ public class BibliotecaAppTest {
 
         assertEquals(InvalidCommand.class, outputCommand.getClass());
     }
+
+    @Test
+    public void testCheckout() {
+        Command outputCommand = BibliotecaApp.create("Checkout");
+
+        assertEquals(CheckoutBookCommand.class, outputCommand.getClass());
+    }
+
+    @Test
+    public void testCheckin() {
+        Command outputCommand = BibliotecaApp.create("Checkin");
+
+        assertEquals(CheckinBookCommand.class, outputCommand.getClass());
+    }
+
+    @Test
+    public void testSuccessfulTitleCheck() {
+        assertEquals("title1", BibliotecaApp.checkForCheckinOrOut("checkout title1"));
+    }
+
+    @Test
+    public void testUnsuccessfulTitleCheck() {
+        assertEquals("", BibliotecaApp.checkForCheckinOrOut("checkout"));
+    }
 }
