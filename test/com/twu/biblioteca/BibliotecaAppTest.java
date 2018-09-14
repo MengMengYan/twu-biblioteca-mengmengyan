@@ -40,7 +40,4 @@ public class BibliotecaAppTest {
 
         assertEquals("Welcome to Biblioteca\nSee you again", outContent.toString().trim());
     }
-
-
-
 }
