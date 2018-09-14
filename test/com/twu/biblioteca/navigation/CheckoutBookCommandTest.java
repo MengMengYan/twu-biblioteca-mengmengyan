@@ -33,4 +33,9 @@ public class CheckoutBookCommandTest {
         assertEquals("Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null));
     }
 
+    @Test
+    public void checkoutSuccessfully() {
+        assertEquals("Thank you! Enjoy the book", testee.execute(inventory, "Title1"));
+    }
+
 }

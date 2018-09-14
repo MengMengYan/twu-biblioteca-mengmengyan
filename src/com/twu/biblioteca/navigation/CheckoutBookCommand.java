@@ -7,7 +7,7 @@ public class CheckoutBookCommand implements Command {
     public String execute(Inventory inventory, String book) {
         boolean checkedOut = inventory.checkout(book);
         if (checkedOut) {
-            return "";
+            return "Thank you! Enjoy the book";
         }
         return "";
     }
