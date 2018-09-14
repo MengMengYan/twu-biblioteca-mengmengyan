@@ -38,8 +38,10 @@ public class BibliotecaApp {
             return new QuitCommand();
         } else if (input.equals("List Books")) {
             return new ListBookCommand();
-        } else {
+        } else if (input.equals("Menu")) {
             return new MenuCommand();
+        } else {
+            return new InvalidCommand();
         }
     }
 

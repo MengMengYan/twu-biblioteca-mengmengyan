@@ -1,10 +1,7 @@
 package com.twu.biblioteca;
 
 
-import com.twu.biblioteca.navigation.Command;
-import com.twu.biblioteca.navigation.ListBookCommand;
-import com.twu.biblioteca.navigation.MenuCommand;
-import com.twu.biblioteca.navigation.QuitCommand;
+import com.twu.biblioteca.navigation.*;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -30,5 +27,12 @@ public class BibliotecaAppTest {
         Command outputCommand = BibliotecaApp.create("Menu");
 
         assertEquals(MenuCommand.class, outputCommand.getClass());
+    }
+
+    @Test
+    public void testInvalidCommand() {
+        Command outputCommand = BibliotecaApp.create("!!!!");
+
+        assertEquals(InvalidCommand.class, outputCommand.getClass());
     }
 }
