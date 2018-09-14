@@ -41,4 +41,9 @@ public class CheckinBookCommandTest {
     public void checkinSuccessfully() {
         assertEquals("Thank you for returning the book", testee.execute(inventory, "Title1"));
     }
+
+    @Test
+    public void checkinUnsuccessfully() {
+        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3"));
+    }
 }

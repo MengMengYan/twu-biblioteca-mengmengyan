@@ -8,7 +8,7 @@ public class CheckinBookCommand implements Command {
         if (inventory.checkin(book)) {
             return "Thank you for returning the book";
         } else {
-            return "";
+            return "That is not a valid book to return";
         }
     }
 }
