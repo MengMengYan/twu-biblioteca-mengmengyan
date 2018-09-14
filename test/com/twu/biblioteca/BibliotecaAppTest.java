@@ -1,49 +1,34 @@
 package com.twu.biblioteca;
 
 
-import org.junit.Before;
+import com.twu.biblioteca.navigation.Command;
+import com.twu.biblioteca.navigation.ListBookCommand;
+import com.twu.biblioteca.navigation.MenuCommand;
+import com.twu.biblioteca.navigation.QuitCommand;
 import org.junit.Test;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.junit.Assert.assertEquals;
 
 public class BibliotecaAppTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    @Test
+    public void testListBooks() {
+        Command outputCommand = BibliotecaApp.create("List Books");
 
-    @Before
-    public void setUpStreams() {
-        System.setOut(new PrintStream(outContent));
+        assertEquals(ListBookCommand.class, outputCommand.getClass());
     }
 
     @Test
-    public void testListBooks() throws InterruptedException {
-        Thread threadStartingMain = new Thread(() -> BibliotecaApp.main(new String[]{}));
+    public void testQuit() {
+        Command outputCommand = BibliotecaApp.create("Quit");
 
-        ByteArrayInputStream in = new ByteArrayInputStream("List Books\n".getBytes());
-        System.setIn(in);
-
-        threadStartingMain.start();
-        Thread.sleep(100);
-        assertEquals("Welcome to Biblioteca\n" +
-                "Menu - Opens menu\tList Books - Lists all available books\tQuit - Quits Biblioteca\n" +
-                "Title1\t|\tAuthor1\t|\t2042\nTitle2\t|\tAuthor2\t|\t1098", outContent.toString().trim());
+        assertEquals(QuitCommand.class, outputCommand.getClass());
     }
 
     @Test
-    public void testQuit() throws InterruptedException {
-        Thread threadStartingMain = new Thread(() -> BibliotecaApp.main(new String[]{}));
+    public void testMenu() {
+        Command outputCommand = BibliotecaApp.create("Menu");
 
-        ByteArrayInputStream in = new ByteArrayInputStream("Quit".getBytes());
-        System.setIn(in);
-
-        threadStartingMain.start();
-        Thread.sleep(100);
-        assertEquals("Welcome to Biblioteca\n" +
-                "Menu - Opens menu\tList Books - Lists all available books\tQuit - Quits Biblioteca\n" +
-                "See you again", outContent.toString().trim());
+        assertEquals(MenuCommand.class, outputCommand.getClass());
     }
 }

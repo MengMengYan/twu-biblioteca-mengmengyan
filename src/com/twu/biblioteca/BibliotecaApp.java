@@ -23,15 +23,23 @@ public class BibliotecaApp {
 
         while (continueRunning) {
             String input = getStringInput(in);
-            if (input.equals("Quit")) {
+
+            command = create(input);
+
+            if (command.getClass().equals(QuitCommand.class)) {
                 continueRunning = false;
-                command = new QuitCommand();
-            } else if (input.equals("List Books")) {
-                command = new ListBookCommand();
-            } else {
-                command = new MenuCommand();
             }
             System.out.println(command.execute(inventory));
+        }
+    }
+
+    static Command create(String input) {
+        if (input.equals("Quit")) {
+            return new QuitCommand();
+        } else if (input.equals("List Books")) {
+            return new ListBookCommand();
+        } else {
+            return new MenuCommand();
         }
     }
 
