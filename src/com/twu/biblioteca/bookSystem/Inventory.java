@@ -19,12 +19,12 @@ public class Inventory {
         return availableBooks.values();
     }
 
-    public String checkout(String title) {
+    public boolean checkout(String title) {
         if (availableBooks.containsKey(title)) {
             availableBooks.remove(title);
-            return "Thank you! Enjoy the book";
+            return true;
         }
-        return "That book is not available";
+        return false;
     }
 
     public String checkin(String title) {

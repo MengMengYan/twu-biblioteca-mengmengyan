@@ -7,15 +7,15 @@ import java.util.Collection;
 
 public class ListBookCommand implements Command {
     @Override
-    public String execute(Inventory inventory) {
+    public String execute(Inventory inventory, String book) {
         Collection<Book> books = inventory.getBooks();
         if (books.isEmpty()) {
             return "No Book available";
         }
 
         StringBuilder bookList = new StringBuilder();
-        for (Book book : books) {
-            bookList.append(book.getDetails()).append("\n");
+        for (Book inventoryBook : books) {
+            bookList.append(inventoryBook.getDetails()).append("\n");
         }
         return bookList.toString().trim();
     }

@@ -15,6 +15,6 @@ public class QuitCommandTest {
 
     @Test
     public void shouldReturnByeMessage() {
-        assertEquals("See you again", this.testee.execute(null));
+        assertEquals("See you again", this.testee.execute(null, null));
     }
 }

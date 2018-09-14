@@ -16,7 +16,7 @@ public class BibliotecaApp {
         Menu menu = new Menu();
         System.out.println(menu.welcomeUser());
         Command command = new MenuCommand();
-        System.out.println(command.execute(null));
+        System.out.println(command.execute(null, null));
 
         Inventory inventory = initializeInventory();
         Scanner in = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class BibliotecaApp {
             if (command.getClass().equals(QuitCommand.class)) {
                 continueRunning = false;
             }
-            System.out.println(command.execute(inventory));
+            System.out.println(command.execute(inventory, null));
         }
     }
 
