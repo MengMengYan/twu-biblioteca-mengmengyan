@@ -5,7 +5,10 @@ import com.twu.biblioteca.bookSystem.Inventory;
 public class CheckinBookCommand implements Command {
     @Override
     public String execute(Inventory inventory, String book) {
-        inventory.checkin(book);
-        return "";
+        if (inventory.checkin(book)) {
+            return "Thank you for returning the book";
+        } else {
+            return "";
+        }
     }
 }

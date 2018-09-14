@@ -33,12 +33,12 @@ public class InventoryTest {
     @Test
     public void testSuccessfulReturn() {
         inventory.checkout("Title1");
-        assertEquals("Thank you for returning the book", inventory.checkin("Title1"));
+        assertEquals(true, inventory.checkin("Title1"));
     }
 
     @Test
     public void testUnsuccessfulReturn() {
-        assertEquals("That is not a valid book to return", inventory.checkin("Title"));
+        assertEquals(false, inventory.checkin("Title"));
     }
 
 }

@@ -27,11 +27,11 @@ public class Inventory {
         return false;
     }
 
-    public String checkin(String title) {
+    public boolean checkin(String title) {
         if (completeBooks.containsKey(title)) {
             this.availableBooks.put(title, completeBooks.get(title));
-            return "Thank you for returning the book";
+            return true;
         }
-        return "That is not a valid book to return";
+        return false;
     }
 }
