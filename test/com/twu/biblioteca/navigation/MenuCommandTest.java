@@ -15,6 +15,10 @@ public class MenuCommandTest {
 
     @Test
     public void shouldReturnMenu() {
-        assertEquals("Menu - Opens menu\tList Books - Lists all available books\tQuit - Quits Biblioteca", this.testee.execute(null, null));
+        assertEquals("Menu - Opens menu\n" +
+                "List Books - Lists all available books\n" +
+                "Checkout [BOOK TITLE] - checkout a book\n" +
+                "Checkin [BOOK TITLE] - checkin a book\n" +
+                "Quit - Quits Biblioteca", this.testee.execute(null, null));
     }
 }
