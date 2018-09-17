@@ -58,6 +58,8 @@ public class BibliotecaApp {
             return new QuitCommand();
         } else if (input.contains("list books")) {
             return new ListBookCommand();
+        } else if (input.contains("list movies")) {
+            return new ListMovieCommand();
         } else if (input.contains("menu")) {
             return new MenuCommand();
         } else if (input.contains("checkout")) {

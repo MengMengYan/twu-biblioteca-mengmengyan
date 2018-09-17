@@ -16,6 +16,13 @@ public class BibliotecaAppTest {
     }
 
     @Test
+    public void testListMovies() {
+        Command outputCommand = BibliotecaApp.create("list movies");
+
+        assertEquals(ListMovieCommand.class, outputCommand.getClass());
+    }
+
+    @Test
     public void testQuit() {
         Command outputCommand = BibliotecaApp.create("quit");
 
