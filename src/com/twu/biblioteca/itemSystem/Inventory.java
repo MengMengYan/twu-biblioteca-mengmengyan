@@ -8,15 +8,26 @@ public class Inventory {
     private Map<String, Book> availableBooks;
     private Map<String, Book> completeBooks;
 
-    public Inventory(Map<String, Book> books) {
+    private Map<String, Movie> availableMovies;
+    private Map<String, Movie> completeMovies;
+
+    public Inventory(Map<String, Book> books, Map<String, Movie> movies) {
         this.availableBooks = books;
         this.completeBooks = new HashMap<>();
         this.completeBooks.putAll(books);
+
+        this.availableMovies = movies;
+        this.completeMovies = new HashMap<>();
+        this.completeMovies.putAll(movies);
     }
 
 
     public Collection<Book> getBooks() {
         return availableBooks.values();
+    }
+
+    public Collection<Movie> getMovies() {
+        return availableMovies.values();
     }
 
     public boolean checkout(String title) {

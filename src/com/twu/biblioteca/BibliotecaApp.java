@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Movie;
 import com.twu.biblioteca.navigation.*;
 
 import java.util.HashMap;
@@ -74,7 +75,9 @@ public class BibliotecaApp {
         Book book2 = new Book("Title2", "Author2", 1098);
         books.put("Title1", book1);
         books.put("Title2", book2);
-        return new Inventory(books);
+
+        Map<String, Movie> movies = new HashMap<String, Movie>();
+        return new Inventory(books, movies);
     }
 
     private static String getStringInput(Scanner in) {

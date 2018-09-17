@@ -2,6 +2,7 @@ package com.twu.biblioteca.navigation;
 
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +24,9 @@ public class CheckoutBookCommandTest {
         Book book2 = new Book("Title2", "Author2", 1098);
         books.put("Title1", book1);
         books.put("Title2", book2);
-        inventory = new Inventory(books);
+
+        Map<String, Movie> movies = new HashMap<>();
+        inventory = new Inventory(books, movies);
     }
 
     @Test

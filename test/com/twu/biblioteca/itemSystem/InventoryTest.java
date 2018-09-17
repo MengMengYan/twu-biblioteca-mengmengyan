@@ -17,7 +17,9 @@ public class InventoryTest {
         Book book2 = new Book("Title2", "Author2", 1098);
         books.put("Title1", book1);
         books.put("Title2", book2);
-        inventory = new Inventory(books);
+
+        HashMap<String, Movie> movies = new HashMap<>();
+        inventory = new Inventory(books, movies);
     }
 
     @Test
