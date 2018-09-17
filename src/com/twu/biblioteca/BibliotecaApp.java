@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.bookSystem.Book;
-import com.twu.biblioteca.bookSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Book;
+import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.navigation.*;
 
 import java.util.HashMap;

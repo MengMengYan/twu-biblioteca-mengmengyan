@@ -1,6 +1,6 @@
 package com.twu.biblioteca.navigation;
 
-import com.twu.biblioteca.bookSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Inventory;
 
 public class InvalidCommand implements Command {
     @Override

@@ -1,4 +1,4 @@
-package com.twu.biblioteca.bookSystem;
+package com.twu.biblioteca.itemSystem;
 
 import java.util.Collection;
 import java.util.HashMap;

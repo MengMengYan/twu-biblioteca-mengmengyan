@@ -1,4 +1,4 @@
-package com.twu.biblioteca.bookSystem;
+package com.twu.biblioteca.itemSystem;
 
 import org.junit.Test;
 
