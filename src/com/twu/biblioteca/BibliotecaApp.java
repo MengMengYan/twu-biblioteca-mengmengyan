@@ -13,9 +13,9 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         boolean continueRunning = true;
-        Menu menu = new Menu();
-        System.out.println(menu.welcomeUser());
-        Command command = new MenuCommand();
+        Command command = new WelcomeCommand();
+        System.out.println(command.execute(null, null));
+        command = new MenuCommand();
         System.out.println(command.execute(null, null));
 
         Inventory inventory = initializeInventory();
@@ -37,6 +37,7 @@ public class BibliotecaApp {
     static String checkForCheckinOrOut(String input) {
         if (input.contains("check")) {
             String[] singleInputs = input.split("\\s+");
+            System.out.println(input);
             if (singleInputs.length > 1) {
                 return singleInputs[1];
             }
@@ -46,15 +47,15 @@ public class BibliotecaApp {
 
     static Command create(String input) {
 
-        if (input.toLowerCase().contains("quit")) {
+        if (input.contains("quit")) {
             return new QuitCommand();
-        } else if (input.toLowerCase().contains("list books")) {
+        } else if (input.contains("list books")) {
             return new ListBookCommand();
-        } else if (input.toLowerCase().contains("menu")) {
+        } else if (input.contains("menu")) {
             return new MenuCommand();
-        } else if (input.toLowerCase().contains("checkout")) {
+        } else if (input.contains("checkout")) {
             return new CheckoutBookCommand();
-        } else if (input.toLowerCase().contains("checkin")) {
+        } else if (input.contains("checkin")) {
             return new CheckinBookCommand();
         } else {
             return new InvalidCommand();
@@ -71,6 +72,6 @@ public class BibliotecaApp {
     }
 
     private static String getStringInput(Scanner in) {
-        return in.nextLine().trim();
+        return in.nextLine().trim().toLowerCase();
     }
 }

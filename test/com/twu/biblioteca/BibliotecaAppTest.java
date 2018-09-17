@@ -10,21 +10,21 @@ public class BibliotecaAppTest {
 
     @Test
     public void testListBooks() {
-        Command outputCommand = BibliotecaApp.create("List Books");
+        Command outputCommand = BibliotecaApp.create("list books");
 
         assertEquals(ListBookCommand.class, outputCommand.getClass());
     }
 
     @Test
     public void testQuit() {
-        Command outputCommand = BibliotecaApp.create("Quit");
+        Command outputCommand = BibliotecaApp.create("quit");
 
         assertEquals(QuitCommand.class, outputCommand.getClass());
     }
 
     @Test
     public void testMenu() {
-        Command outputCommand = BibliotecaApp.create("Menu");
+        Command outputCommand = BibliotecaApp.create("menu");
 
         assertEquals(MenuCommand.class, outputCommand.getClass());
     }
@@ -38,14 +38,14 @@ public class BibliotecaAppTest {
 
     @Test
     public void testCheckout() {
-        Command outputCommand = BibliotecaApp.create("Checkout");
+        Command outputCommand = BibliotecaApp.create("checkout");
 
         assertEquals(CheckoutBookCommand.class, outputCommand.getClass());
     }
 
     @Test
     public void testCheckin() {
-        Command outputCommand = BibliotecaApp.create("Checkin");
+        Command outputCommand = BibliotecaApp.create("checkin");
 
         assertEquals(CheckinBookCommand.class, outputCommand.getClass());
     }
