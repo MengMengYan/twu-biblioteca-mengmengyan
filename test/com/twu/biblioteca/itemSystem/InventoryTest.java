@@ -19,27 +19,41 @@ public class InventoryTest {
         books.put("Title2", book2);
 
         HashMap<String, Movie> movies = new HashMap<>();
+        Movie movie1 = new Movie("Title1", 19, "Director1");
+        Movie movie2 = new Movie("Title2", 444, "Director2");
+        movies.put("Title1", movie1);
+        movies.put("Title2", movie2);
         inventory = new Inventory(books, movies);
     }
 
     @Test
-    public void testSuccessfulCheckout() {
-        assertEquals(true, inventory.checkout("Title1"));
+    public void testSuccessfulBookCheckout() {
+        assertEquals(true, inventory.checkoutBook("Title1"));
     }
 
     @Test
-    public void testUnsuccessfulCheckout() {
-        assertEquals(false, inventory.checkout("Title3"));
+    public void testUnsuccessfulBookCheckout() {
+        assertEquals(false, inventory.checkoutBook("Title3"));
     }
 
     @Test
-    public void testSuccessfulReturn() {
-        inventory.checkout("Title1");
+    public void testSuccessfulMovieCheckout() {
+        assertEquals(true, inventory.checkoutMovie("Title1"));
+    }
+
+    @Test
+    public void testUnsuccessfulMovieCheckout() {
+        assertEquals(false, inventory.checkoutMovie("Title3"));
+    }
+
+    @Test
+    public void testSuccessfulBookReturn() {
+        inventory.checkoutBook("Title1");
         assertEquals(true, inventory.checkin("Title1"));
     }
 
     @Test
-    public void testUnsuccessfulReturn() {
+    public void testUnsuccessfulBookReturn() {
         assertEquals(false, inventory.checkin("Title"));
     }
 

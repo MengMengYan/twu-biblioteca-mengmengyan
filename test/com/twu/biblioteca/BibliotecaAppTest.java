@@ -44,10 +44,18 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void testCheckout() {
-        Command outputCommand = BibliotecaApp.create("checkout");
+    public void testCheckoutBook() {
+        Command outputCommand = BibliotecaApp.create("checkout book");
 
         assertEquals(CheckoutBookCommand.class, outputCommand.getClass());
+    }
+
+
+    @Test
+    public void testCheckoutMovie() {
+        Command outputCommand = BibliotecaApp.create("checkout movie");
+
+        assertEquals(CheckoutMovieCommand.class, outputCommand.getClass());
     }
 
     @Test

@@ -30,9 +30,17 @@ public class Inventory {
         return availableMovies.values();
     }
 
-    public boolean checkout(String title) {
+    public boolean checkoutBook(String title) {
         if (availableBooks.containsKey(title)) {
             availableBooks.remove(title);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkoutMovie(String title) {
+        if (availableMovies.containsKey(title)) {
+            availableMovies.remove(title);
             return true;
         }
         return false;

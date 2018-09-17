@@ -8,7 +8,8 @@ public class MenuCommand implements Command {
         return "Menu - Opens menu\n" +
                 "List Books - Lists all available books\n" +
                 "List Movies - Lists all available movies\n" +
-                "Checkout [BOOK TITLE] - checkout a book\n" +
+                "Checkout book [BOOK TITLE] - checkout a book\n" +
+                "Checkout movie [BOOK TITLE] - checkout a movie\n" +
                 "Checkin [BOOK TITLE] - checkin a book\n" +
                 "Quit - Quits Biblioteca";
     }

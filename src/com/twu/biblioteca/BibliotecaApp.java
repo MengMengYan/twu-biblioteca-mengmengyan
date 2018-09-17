@@ -62,8 +62,10 @@ public class BibliotecaApp {
             return new ListMovieCommand();
         } else if (input.contains("menu")) {
             return new MenuCommand();
-        } else if (input.contains("checkout")) {
+        } else if (input.contains("checkout book")) {
             return new CheckoutBookCommand();
+        } else if (input.contains("checkout movie")) {
+            return new CheckoutMovieCommand();
         } else if (input.contains("checkin")) {
             return new CheckinBookCommand();
         } else {
