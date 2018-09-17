@@ -16,6 +16,6 @@ public class InvalidCommandTest {
 
     @Test
     public void shouldReturnMenu() {
-        assertEquals("Select a valid option!", this.testee.execute(null, null));
+        assertEquals("Select a valid option!", this.testee.execute(null, null, null));
     }
 }

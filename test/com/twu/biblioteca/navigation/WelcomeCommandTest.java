@@ -16,6 +16,6 @@ public class WelcomeCommandTest {
 
     @Test
     public void shouldReturnWelcomeMessage() {
-        assertEquals("Welcome to Biblioteca", this.testee.execute(null, null));
+        assertEquals("Welcome to Biblioteca", this.testee.execute(null, null, null));
     }
 }

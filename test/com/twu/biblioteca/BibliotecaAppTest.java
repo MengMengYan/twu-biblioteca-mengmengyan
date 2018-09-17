@@ -9,6 +9,12 @@ import static org.junit.Assert.assertEquals;
 public class BibliotecaAppTest {
 
     @Test
+    public void testLogin() {
+        Command outputCommand = BibliotecaApp.create("login");
+        assertEquals(LoginCommand.class, outputCommand.getClass());
+    }
+
+    @Test
     public void testListBooks() {
         Command outputCommand = BibliotecaApp.create("list books");
 
@@ -67,7 +73,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void testSuccessfulTitleCheck() {
-        assertEquals("title1", BibliotecaApp.checkForCheckinOrOut("checkout title1"));
+        assertEquals("title1", BibliotecaApp.checkForCheckinOrOut("checkout book title1"));
     }
 
     @Test

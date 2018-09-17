@@ -3,6 +3,7 @@ package com.twu.biblioteca.navigation;
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.itemSystem.Movie;
+import com.twu.biblioteca.roles.RoleType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,25 +29,30 @@ public class CheckinBookCommandTest {
         Map<String, Movie> movies = new HashMap<>();
         inventory = new Inventory(books, movies);
 
-        testee.execute(inventory, "Title1");
+        testee.execute(inventory, "Title1", RoleType.USER);
         testee = new CheckinBookCommand();
     }
 
     @Test
     public void checkinBookLibrarianView() {
-        testee.execute(inventory, "Title1");
+        testee.execute(inventory, "Title1", RoleType.USER);
         testee = new ListBookCommand();
         assertEquals("Title1\t|\tAuthor1\t|\t2042\n" +
-                "Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null));
+                "Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null, RoleType.LIBRARIAN));
     }
 
     @Test
     public void checkinSuccessfully() {
-        assertEquals("Thank you for returning the book", testee.execute(inventory, "Title1"));
+        assertEquals("Thank you for returning the book", testee.execute(inventory, "Title1", RoleType.USER));
     }
 
     @Test
     public void checkinUnsuccessfully() {
-        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3"));
+        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3", RoleType.LIBRARIAN));
+    }
+
+    @Test
+    public void checkinAsGuest() {
+        assertEquals("Please, log in!", testee.execute(inventory, "Title1", RoleType.GUEST));
     }
 }

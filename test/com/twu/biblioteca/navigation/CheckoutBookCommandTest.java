@@ -3,6 +3,7 @@ package com.twu.biblioteca.navigation;
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.itemSystem.Movie;
+import com.twu.biblioteca.roles.RoleType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,19 +32,23 @@ public class CheckoutBookCommandTest {
 
     @Test
     public void checkoutBookLibrarianView() {
-        testee.execute(inventory, "Title1");
+        testee.execute(inventory, "Title1", RoleType.USER);
         testee = new ListBookCommand();
-        assertEquals("Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null));
+        assertEquals("Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null, RoleType.GUEST));
     }
 
     @Test
     public void checkoutSuccessfully() {
-        assertEquals("Thank you! Enjoy the book", testee.execute(inventory, "Title1"));
+        assertEquals("Thank you! Enjoy the book", testee.execute(inventory, "Title1", RoleType.USER));
     }
 
     @Test
     public void checkoutUnsuccessfully() {
-        assertEquals("That book is not available", testee.execute(inventory, "Title3"));
+        assertEquals("That book is not available", testee.execute(inventory, "Title3", RoleType.USER));
     }
 
+    @Test
+    public void checkoutAsGuest() {
+        assertEquals("Please, log in!", testee.execute(inventory, "Title1", RoleType.GUEST));
+    }
 }

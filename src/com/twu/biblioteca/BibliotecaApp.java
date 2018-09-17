@@ -4,6 +4,8 @@ import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.itemSystem.Movie;
 import com.twu.biblioteca.navigation.*;
+import com.twu.biblioteca.roles.Login;
+import com.twu.biblioteca.roles.RoleType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +15,11 @@ public class BibliotecaApp {
 
 
     public static void main(String[] args) {
+
         boolean continueRunning = true;
+        RoleType currentRole = RoleType.GUEST;
         Command command = new WelcomeCommand();
-        greetUser(command);
+        greetUser(command, currentRole);
 
         Inventory inventory = initializeInventory();
         Scanner in = new Scanner(System.in);
@@ -30,23 +34,40 @@ public class BibliotecaApp {
             if (command.getClass().equals(QuitCommand.class)) {
                 continueRunning = false;
             }
+            if (command.getClass().equals(LoginCommand.class)) {
+                currentRole = loginRole(in);
+            }
 
-            System.out.println(command.execute(inventory, possibleBookInput.trim()));
+            System.out.println(command.execute(inventory, possibleBookInput.trim(), currentRole));
         }
     }
 
-    private static void greetUser(Command command) {
-        System.out.println(command.execute(null, null));
+    private static RoleType loginRole(Scanner in) {
+        RoleType currentRole;
+        System.out.print("Please, enter your username: ");
+
+        String username = getStringInput(in);
+
+        System.out.println("Please, enter your password");
+        String password = getStringInput(in);
+
+        Login login = new Login();
+        currentRole = login.login(username, password);
+        return currentRole;
+    }
+
+    private static void greetUser(Command command, RoleType role) {
+        System.out.println(command.execute(null, null, role));
         command = new MenuCommand();
-        System.out.println(command.execute(null, null));
+        System.out.println(command.execute(null, null, role));
     }
 
     static String checkForCheckinOrOut(String input) {
         if (input.contains("check")) {
             String[] singleInputs = input.split("\\s+");
             System.out.println(input);
-            if (singleInputs.length > 1) {
-                return singleInputs[1];
+            if (singleInputs.length > 2) {
+                return singleInputs[2];
             }
         }
         return "";
@@ -56,6 +77,8 @@ public class BibliotecaApp {
 
         if (input.contains("quit")) {
             return new QuitCommand();
+        } else if (input.contains("login")) {
+            return new LoginCommand();
         } else if (input.contains("list books")) {
             return new ListBookCommand();
         } else if (input.contains("list movies")) {

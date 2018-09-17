@@ -1,16 +1,38 @@
 package com.twu.biblioteca.navigation;
 
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.roles.RoleType;
 
 public class MenuCommand implements Command {
     @Override
-    public String execute(Inventory inventory, String book) {
-        return "Menu - Opens menu\n" +
-                "List Books - Lists all available books\n" +
-                "List Movies - Lists all available movies\n" +
-                "Checkout book [BOOK TITLE] - checkout a book\n" +
-                "Checkout movie [BOOK TITLE] - checkout a movie\n" +
-                "Checkin [BOOK TITLE] - checkin a book\n" +
-                "Quit - Quits Biblioteca";
+    public String execute(Inventory inventory, String title, RoleType role) {
+        switch (role) {
+            case USER:
+                return "Menu - Opens menu\n" +
+                        "Login - Log into your account\n" +
+                        "List Books - Lists all available books\n" +
+                        "List Movies - Lists all available movies\n" +
+                        "Checkout book [BOOK TITLE] - checkout a book\n" +
+                        "Checkout movie [BOOK TITLE] - checkout a movie\n" +
+                        "Checkin [BOOK TITLE] - checkin a book\n" +
+                        "Quit - Quits Biblioteca";
+            case LIBRARIAN:
+                return "Menu - Opens menu\n" +
+                        "Login - Log into your account\n" +
+                        "List Books - Lists all available books\n" +
+                        "List Movies - Lists all available movies\n" +
+                        "Checkout book [BOOK TITLE] - checkout a book\n" +
+                        "Checkout movie [BOOK TITLE] - checkout a movie\n" +
+                        "Checkin [BOOK TITLE] - checkin a book\n" +
+                        "List Checkouts - Lists all checked out books\n" +
+                        "Quit - Quits Biblioteca";
+            default:
+                return "Menu - Opens menu\n" +
+                        "Login - Log into your account\n" +
+                        "List Books - Lists all available books\n" +
+                        "List Movies - Lists all available movies\n" +
+                        "Quit - Quits Biblioteca";
+        }
+
     }
 }

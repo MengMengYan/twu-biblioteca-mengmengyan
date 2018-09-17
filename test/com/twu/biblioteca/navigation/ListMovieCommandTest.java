@@ -31,7 +31,7 @@ public class ListMovieCommandTest {
     @Test
     public void shouldListNMovies() {
         assertEquals("Title1\t|\t1111\t|\tDirector1\t|\tunrated\n" +
-                "Title2\t|\t2011\t|\tDirector2\t|\t10", this.testee.execute(inventory, null));
+                "Title2\t|\t2011\t|\tDirector2\t|\t10", this.testee.execute(inventory, null, null));
     }
 
     @Test
@@ -39,6 +39,6 @@ public class ListMovieCommandTest {
         Map<String, Book> noBooks = new HashMap<>();
         Map<String, Movie> noMovies = new HashMap<>();
         this.inventory = new Inventory(noBooks, noMovies);
-        assertEquals("No Movie available", this.testee.execute(this.inventory, null));
+        assertEquals("No Movie available", this.testee.execute(this.inventory, null, null));
     }
 }
