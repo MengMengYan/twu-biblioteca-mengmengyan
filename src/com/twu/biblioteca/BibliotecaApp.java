@@ -14,9 +14,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         boolean continueRunning = true;
         Command command = new WelcomeCommand();
-        System.out.println(command.execute(null, null));
-        command = new MenuCommand();
-        System.out.println(command.execute(null, null));
+        greetUser(command);
 
         Inventory inventory = initializeInventory();
         Scanner in = new Scanner(System.in);
@@ -25,13 +23,21 @@ public class BibliotecaApp {
             String input = getStringInput(in);
 
             String possibleBookInput = checkForCheckinOrOut(input);
+
             command = create(input);
 
             if (command.getClass().equals(QuitCommand.class)) {
                 continueRunning = false;
             }
+
             System.out.println(command.execute(inventory, possibleBookInput.trim()));
         }
+    }
+
+    private static void greetUser(Command command) {
+        System.out.println(command.execute(null, null));
+        command = new MenuCommand();
+        System.out.println(command.execute(null, null));
     }
 
     static String checkForCheckinOrOut(String input) {
