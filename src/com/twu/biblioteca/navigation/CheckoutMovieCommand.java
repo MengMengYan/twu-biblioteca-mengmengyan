@@ -7,7 +7,8 @@ import com.twu.biblioteca.roles.RoleType;
 public class CheckoutMovieCommand implements Command {
     @Override
     public String execute(Inventory inventory, String title, Role role) {
-        if (role.getRoleType().equals(RoleType.GUEST))
+        if (role.getRoleType().equals(RoleType.GUEST)
+                || role.getRoleType().equals(RoleType.LIBRARIAN))
             return "Please, log in!";
 
 

@@ -27,6 +27,7 @@ public abstract class Item {
             return false;
         } else {
             isCheckedin = true;
+            borrower = "";
             return true;
         }
     }

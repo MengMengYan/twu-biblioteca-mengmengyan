@@ -51,6 +51,6 @@ public class CheckoutMovieCommandTest {
 
     @Test
     public void checkoutAsGuest() {
-        assertEquals("Please, log in!", testee.execute(inventory, "Title1", new Guest()));
+        assertEquals("Please, log in as a user!", testee.execute(inventory, "Title1", new Guest()));
     }
 }

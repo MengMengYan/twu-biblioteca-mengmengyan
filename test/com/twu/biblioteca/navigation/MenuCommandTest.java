@@ -33,7 +33,7 @@ public class MenuCommandTest {
                 "List Movies - Lists all available movies\n" +
                 "Checkout book [BOOK TITLE] - checkout a book\n" +
                 "Checkout movie [BOOK TITLE] - checkout a movie\n" +
-                "Checkin [BOOK TITLE] - checkin a book\n" +
+                "Checkin book [BOOK TITLE] - checkin a book\n" +
                 "User Information - show user information\n" +
                 "Quit - Quits Biblioteca", this.testee.execute(null, null, new User("111-1111")));
     }
@@ -44,9 +44,6 @@ public class MenuCommandTest {
                 "Login - Log into your account\n" +
                 "List Books - Lists all available books\n" +
                 "List Movies - Lists all available movies\n" +
-                "Checkout book [BOOK TITLE] - checkout a book\n" +
-                "Checkout movie [BOOK TITLE] - checkout a movie\n" +
-                "Checkin [BOOK TITLE] - checkin a book\n" +
                 "List Borrowers - Lists books with respective borrowers\n" +
                 "Quit - Quits Biblioteca", this.testee.execute(null, null, new Librarian("111-1111")));
     }

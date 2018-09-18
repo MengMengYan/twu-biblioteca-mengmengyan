@@ -51,6 +51,7 @@ public class Inventory {
     public boolean checkin(String title) {
         if (completeBooks.containsKey(title)) {
             this.availableBooks.put(title, completeBooks.get(title));
+            this.completeBooks.get(title).checkin();
             return true;
         }
         return false;

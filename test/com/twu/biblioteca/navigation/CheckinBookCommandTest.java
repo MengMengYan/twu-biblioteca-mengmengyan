@@ -50,11 +50,11 @@ public class CheckinBookCommandTest {
 
     @Test
     public void checkinUnsuccessfully() {
-        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3", new Librarian("111-1111")));
+        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3", new User("111-1111")));
     }
 
     @Test
     public void checkinAsGuest() {
-        assertEquals("Please, log in!", testee.execute(inventory, "Title1", new Guest()));
+        assertEquals("Please, log in as a user!", testee.execute(inventory, "Title1", new Guest()));
     }
 }

@@ -66,7 +66,7 @@ public class BibliotecaAppTest {
 
     @Test
     public void testCheckin() {
-        Command outputCommand = BibliotecaApp.create("checkin");
+        Command outputCommand = BibliotecaApp.create("checkin book");
 
         assertEquals(CheckinBookCommand.class, outputCommand.getClass());
     }

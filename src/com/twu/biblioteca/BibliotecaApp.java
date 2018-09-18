@@ -90,7 +90,7 @@ public class BibliotecaApp {
             return new CheckoutBookCommand();
         } else if (input.contains("checkout movie")) {
             return new CheckoutMovieCommand();
-        } else if (input.contains("checkin")) {
+        } else if (input.contains("checkin book")) {
             return new CheckinBookCommand();
         } else if (input.contains("list borrowers")) {
             return new ListBookBorrowerCommand();

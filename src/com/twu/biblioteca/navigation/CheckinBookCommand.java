@@ -8,8 +8,9 @@ public class CheckinBookCommand implements Command {
     @Override
     public String execute(Inventory inventory, String title, Role role) {
 
-        if (role.getRoleType().equals(RoleType.GUEST))
-            return "Please, log in!";
+        if (role.getRoleType().equals(RoleType.GUEST)
+                || role.getRoleType().equals(RoleType.LIBRARIAN))
+            return "Please, log in as a user!";
 
         if (inventory.checkin(title)) {
             return "Thank you for returning the book";
