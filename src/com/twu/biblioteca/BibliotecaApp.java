@@ -4,8 +4,9 @@ import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.itemSystem.Movie;
 import com.twu.biblioteca.navigation.*;
+import com.twu.biblioteca.roles.Guest;
 import com.twu.biblioteca.roles.Login;
-import com.twu.biblioteca.roles.RoleType;
+import com.twu.biblioteca.roles.Role;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
 
         boolean continueRunning = true;
-        RoleType currentRole = RoleType.GUEST;
+        Role currentRole = new Guest();
         Command command = new WelcomeCommand();
         greetUser(command, currentRole);
 
@@ -42,8 +43,8 @@ public class BibliotecaApp {
         }
     }
 
-    private static RoleType loginRole(Scanner in) {
-        RoleType currentRole;
+    private static Role loginRole(Scanner in) {
+        Role currentRole;
         System.out.print("Please, enter your username: ");
 
         String username = getStringInput(in);
@@ -56,7 +57,7 @@ public class BibliotecaApp {
         return currentRole;
     }
 
-    private static void greetUser(Command command, RoleType role) {
+    private static void greetUser(Command command, Role role) {
         System.out.println(command.execute(null, null, role));
         command = new MenuCommand();
         System.out.println(command.execute(null, null, role));

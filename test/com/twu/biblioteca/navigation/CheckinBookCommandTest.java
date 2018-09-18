@@ -3,7 +3,9 @@ package com.twu.biblioteca.navigation;
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.itemSystem.Movie;
-import com.twu.biblioteca.roles.RoleType;
+import com.twu.biblioteca.roles.Guest;
+import com.twu.biblioteca.roles.Librarian;
+import com.twu.biblioteca.roles.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,30 +31,30 @@ public class CheckinBookCommandTest {
         Map<String, Movie> movies = new HashMap<>();
         inventory = new Inventory(books, movies);
 
-        testee.execute(inventory, "Title1", RoleType.USER);
+        testee.execute(inventory, "Title1", new User("111-1111"));
         testee = new CheckinBookCommand();
     }
 
     @Test
     public void checkinBookLibrarianView() {
-        testee.execute(inventory, "Title1", RoleType.USER);
+        testee.execute(inventory, "Title1", new User("111-1111"));
         testee = new ListBookCommand();
         assertEquals("Title1\t|\tAuthor1\t|\t2042\n" +
-                "Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null, RoleType.LIBRARIAN));
+                "Title2\t|\tAuthor2\t|\t1098", this.testee.execute(inventory, null, new Librarian("111-1111")));
     }
 
     @Test
     public void checkinSuccessfully() {
-        assertEquals("Thank you for returning the book", testee.execute(inventory, "Title1", RoleType.USER));
+        assertEquals("Thank you for returning the book", testee.execute(inventory, "Title1", new User("111-1111")));
     }
 
     @Test
     public void checkinUnsuccessfully() {
-        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3", RoleType.LIBRARIAN));
+        assertEquals("That is not a valid book to return", testee.execute(inventory, "Title3", new Librarian("111-1111")));
     }
 
     @Test
     public void checkinAsGuest() {
-        assertEquals("Please, log in!", testee.execute(inventory, "Title1", RoleType.GUEST));
+        assertEquals("Please, log in!", testee.execute(inventory, "Title1", new Guest()));
     }
 }

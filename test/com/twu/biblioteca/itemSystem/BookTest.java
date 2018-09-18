@@ -19,6 +19,11 @@ public class BookTest {
     }
 
     @Test
+    public void testWhoCheckedOutBook() {
+
+    }
+
+    @Test
     public void checkoutWrongBookTest() {
         Book testBook = new Book("And the Mountains Echoed", "Khaled HOSSEINI", 2013);
         testBook.checkout();

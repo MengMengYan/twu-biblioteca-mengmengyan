@@ -1,6 +1,8 @@
 package com.twu.biblioteca.navigation;
 
-import com.twu.biblioteca.roles.RoleType;
+import com.twu.biblioteca.roles.Guest;
+import com.twu.biblioteca.roles.Librarian;
+import com.twu.biblioteca.roles.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +22,7 @@ public class MenuCommandTest {
                 "Login - Log into your account\n" +
                 "List Books - Lists all available books\n" +
                 "List Movies - Lists all available movies\n" +
-                "Quit - Quits Biblioteca", this.testee.execute(null, null, RoleType.GUEST));
+                "Quit - Quits Biblioteca", this.testee.execute(null, null, new Guest()));
     }
 
     @Test
@@ -32,7 +34,7 @@ public class MenuCommandTest {
                 "Checkout book [BOOK TITLE] - checkout a book\n" +
                 "Checkout movie [BOOK TITLE] - checkout a movie\n" +
                 "Checkin [BOOK TITLE] - checkin a book\n" +
-                "Quit - Quits Biblioteca", this.testee.execute(null, null, RoleType.USER));
+                "Quit - Quits Biblioteca", this.testee.execute(null, null, new User("111-1111")));
     }
 
     @Test
@@ -45,6 +47,6 @@ public class MenuCommandTest {
                 "Checkout movie [BOOK TITLE] - checkout a movie\n" +
                 "Checkin [BOOK TITLE] - checkin a book\n" +
                 "List Checkouts - Lists all checked out books\n" +
-                "Quit - Quits Biblioteca", this.testee.execute(null, null, RoleType.LIBRARIAN));
+                "Quit - Quits Biblioteca", this.testee.execute(null, null, new Librarian("111-1111")));
     }
 }

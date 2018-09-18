@@ -1,14 +1,12 @@
 package com.twu.biblioteca.navigation;
 
 import com.twu.biblioteca.itemSystem.Inventory;
-import com.twu.biblioteca.roles.RoleType;
-
-import java.util.Scanner;
+import com.twu.biblioteca.roles.Role;
 
 public class LoginCommand implements Command {
     @Override
-    public String execute(Inventory inventory, String title, RoleType role) {
-        switch (role) {
+    public String execute(Inventory inventory, String title, Role role) {
+        switch (role.getRoleType()) {
             case USER:
                 return "You are now logged in as a user";
             case LIBRARIAN:
@@ -16,9 +14,5 @@ public class LoginCommand implements Command {
             default:
                 return "You did not log in successfully";
         }
-    }
-
-    private String getStringInput(Scanner in) {
-        return in.nextLine().trim();
     }
 }

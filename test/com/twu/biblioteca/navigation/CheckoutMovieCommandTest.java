@@ -3,7 +3,8 @@ package com.twu.biblioteca.navigation;
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
 import com.twu.biblioteca.itemSystem.Movie;
-import com.twu.biblioteca.roles.RoleType;
+import com.twu.biblioteca.roles.Guest;
+import com.twu.biblioteca.roles.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,23 +34,23 @@ public class CheckoutMovieCommandTest {
 
     @Test
     public void checkoutMovieLibrarianView() {
-        testee.execute(inventory, "Title1", RoleType.USER);
+        testee.execute(inventory, "Title1", new User("111-1111"));
         testee = new ListMovieCommand();
-        assertEquals("Title2\t|\t2000\t|\tDirector2\t|\tunrated", this.testee.execute(inventory, null, RoleType.USER));
+        assertEquals("Title2\t|\t2000\t|\tDirector2\t|\tunrated", this.testee.execute(inventory, null, new User("111-1111")));
     }
 
     @Test
     public void checkoutSuccessfully() {
-        assertEquals("Thank you! Enjoy the movie", testee.execute(inventory, "Title1", RoleType.USER));
+        assertEquals("Thank you! Enjoy the movie", testee.execute(inventory, "Title1", new User("111-1111")));
     }
 
     @Test
     public void checkoutUnsuccessfully() {
-        assertEquals("That movie is not available", testee.execute(inventory, "Title3", RoleType.USER));
+        assertEquals("That movie is not available", testee.execute(inventory, "Title3", new User("111-1111")));
     }
 
     @Test
     public void checkoutAsGuest() {
-        assertEquals("Please, log in!", testee.execute(inventory, "Title1", RoleType.GUEST));
+        assertEquals("Please, log in!", testee.execute(inventory, "Title1", new Guest()));
     }
 }

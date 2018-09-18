@@ -10,19 +10,19 @@ public class LoginTest {
     public void testLibrarianLogin() {
         Login login = new Login();
 
-        assertEquals(RoleType.LIBRARIAN, login.login("111-1111", "xyz"));
+        assertEquals(RoleType.LIBRARIAN, login.login("111-1111", "xyz").getRoleType());
     }
 
     @Test
     public void testUserLogin() {
         Login login = new Login();
 
-        assertEquals(RoleType.USER, login.login("777-7777", "abc"));
+        assertEquals(RoleType.USER, login.login("777-7777", "abc").getRoleType());
     }
 
     @Test
     public void testWrongUsernameFormat() {
         Login login = new Login();
-        assertEquals(RoleType.GUEST, login.login("111", "xyz"));
+        assertEquals(RoleType.GUEST, login.login("111", "xyz").getRoleType());
     }
 }

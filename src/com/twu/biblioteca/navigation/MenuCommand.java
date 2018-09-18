@@ -1,12 +1,12 @@
 package com.twu.biblioteca.navigation;
 
 import com.twu.biblioteca.itemSystem.Inventory;
-import com.twu.biblioteca.roles.RoleType;
+import com.twu.biblioteca.roles.Role;
 
 public class MenuCommand implements Command {
     @Override
-    public String execute(Inventory inventory, String title, RoleType role) {
-        switch (role) {
+    public String execute(Inventory inventory, String title, Role role) {
+        switch (role.getRoleType()) {
             case USER:
                 return "Menu - Opens menu\n" +
                         "Login - Log into your account\n" +
