@@ -2,6 +2,7 @@ package com.twu.biblioteca.navigation;
 
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Item;
 import com.twu.biblioteca.roles.Guest;
 import com.twu.biblioteca.roles.Librarian;
 import com.twu.biblioteca.roles.User;
@@ -35,7 +36,7 @@ public class ListBookBorrowerCommandTest {
 
     @Test
     public void librarianListBorrowers() {
-        HashMap<String, Book> books = new HashMap<>();
+        HashMap<String, Item> books = new HashMap<>();
         Book book1 = new Book("Title1", "Author1", 1999);
         book1.checkout(new User("222-2222"));
         Book book2 = new Book("Title2", "Author2", 2000);

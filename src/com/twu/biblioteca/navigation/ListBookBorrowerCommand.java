@@ -1,7 +1,7 @@
 package com.twu.biblioteca.navigation;
 
-import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Item;
 import com.twu.biblioteca.roles.Role;
 import com.twu.biblioteca.roles.RoleType;
 
@@ -15,11 +15,11 @@ public class ListBookBorrowerCommand implements Command {
             return "Please, log in as a librarian";
         }
 
-        List<Book> borrowedBooks = inventory.getBookBorrowerList();
+        List<Item> borrowedBooks = inventory.getBookBorrowerList();
 
         StringBuilder bookList = new StringBuilder();
 
-        for (Book book : borrowedBooks) {
+        for (Item book : borrowedBooks) {
             bookList.append(book.getBorrower() + " borrowed " + book.getDetails() + "\n");
         }
 

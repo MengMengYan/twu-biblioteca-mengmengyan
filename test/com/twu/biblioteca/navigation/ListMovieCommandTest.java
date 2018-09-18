@@ -1,7 +1,7 @@
 package com.twu.biblioteca.navigation;
 
-import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Item;
 import com.twu.biblioteca.itemSystem.Movie;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,8 +19,8 @@ public class ListMovieCommandTest {
     public void setUp() {
         this.testee = new ListMovieCommand();
 
-        Map<String, Book> books = new HashMap<>();
-        Map<String, Movie> movies = new HashMap<>();
+        Map<String, Item> books = new HashMap<>();
+        Map<String, Item> movies = new HashMap<>();
         Movie movie1 = new Movie("Title1", 1111, "Director1");
         Movie movie2 = new Movie("Title2", 2011, "Director2", 10);
         movies.put("Title1", movie1);
@@ -36,8 +36,8 @@ public class ListMovieCommandTest {
 
     @Test
     public void shouldListNoBooks() {
-        Map<String, Book> noBooks = new HashMap<>();
-        Map<String, Movie> noMovies = new HashMap<>();
+        Map<String, Item> noBooks = new HashMap<>();
+        Map<String, Item> noMovies = new HashMap<>();
         this.inventory = new Inventory(noBooks, noMovies);
         assertEquals("No Movie available", this.testee.execute(this.inventory, null, null));
     }

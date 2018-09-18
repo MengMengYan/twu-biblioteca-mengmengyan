@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Item;
 import com.twu.biblioteca.itemSystem.Movie;
 import com.twu.biblioteca.navigation.*;
 import com.twu.biblioteca.roles.Guest;
@@ -49,7 +50,7 @@ public class BibliotecaApp {
 
         String username = getStringInput(in);
 
-        System.out.print("Please, enter your password");
+        System.out.print("Please, enter your password: ");
         String password = getStringInput(in);
 
         Login login = new Login();
@@ -101,13 +102,17 @@ public class BibliotecaApp {
     }
 
     private static Inventory initializeInventory() {
-        Map<String, Book> books = new HashMap<String, Book>();
+        Map<String, Item> books = new HashMap<>();
         Book book1 = new Book("Title1", "Author1", 2042);
         Book book2 = new Book("Title2", "Author2", 1098);
         books.put("Title1", book1);
         books.put("Title2", book2);
 
-        Map<String, Movie> movies = new HashMap<String, Movie>();
+        Map<String, Item> movies = new HashMap<>();
+        Movie movie1 = new Movie("Title1", 1000, "Director1");
+        Movie movie2 = new Movie("Title2", 2000, "Director2");
+        movies.put("Title1", movie1);
+        movies.put("Title2", movie2);
         return new Inventory(books, movies);
     }
 

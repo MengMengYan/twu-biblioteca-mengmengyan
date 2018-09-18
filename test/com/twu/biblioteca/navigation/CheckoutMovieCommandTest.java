@@ -1,7 +1,7 @@
 package com.twu.biblioteca.navigation;
 
-import com.twu.biblioteca.itemSystem.Book;
 import com.twu.biblioteca.itemSystem.Inventory;
+import com.twu.biblioteca.itemSystem.Item;
 import com.twu.biblioteca.itemSystem.Movie;
 import com.twu.biblioteca.roles.Guest;
 import com.twu.biblioteca.roles.User;
@@ -22,13 +22,13 @@ public class CheckoutMovieCommandTest {
     public void setUp() {
         this.testee = new CheckoutMovieCommand();
 
-        Map<String, Movie> movies = new HashMap<String, Movie>();
+        Map<String, Item> movies = new HashMap<>();
         Movie movie1 = new Movie("Title1", 1000, "Director1");
         Movie movie2 = new Movie("Title2", 2000, "Director2");
         movies.put("Title1", movie1);
         movies.put("Title2", movie2);
 
-        Map<String, Book> books = new HashMap<>();
+        Map<String, Item> books = new HashMap<>();
         inventory = new Inventory(books, movies);
     }
 

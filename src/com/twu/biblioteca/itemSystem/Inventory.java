@@ -5,13 +5,13 @@ import com.twu.biblioteca.roles.Role;
 import java.util.*;
 
 public class Inventory {
-    private Map<String, Book> availableBooks;
-    private Map<String, Book> completeBooks;
+    private Map<String, Item> availableBooks;
+    private Map<String, Item> completeBooks;
 
-    private Map<String, Movie> availableMovies;
-    private Map<String, Movie> completeMovies;
+    private Map<String, Item> availableMovies;
+    private Map<String, Item> completeMovies;
 
-    public Inventory(Map<String, Book> books, Map<String, Movie> movies) {
+    public Inventory(Map<String, Item> books, Map<String, Item> movies) {
         this.availableBooks = books;
         this.completeBooks = new HashMap<>();
         this.completeBooks.putAll(books);
@@ -22,31 +22,31 @@ public class Inventory {
     }
 
 
-    public Collection<Book> getBooks() {
+    public Collection<Item> getBooks() {
         return availableBooks.values();
     }
 
-    public Collection<Movie> getMovies() {
+    public Collection<Item> getMovies() {
         return availableMovies.values();
     }
 
     public boolean checkoutBook(String title, Role user) {
-        if (availableBooks.containsKey(title)) {
-            availableBooks.remove(title);
-            completeBooks.get(title).checkout(user);
+        return checkout(title, user, availableBooks, completeBooks);
+    }
+
+    public boolean checkoutMovie(String title, Role user) {
+        return checkout(title, user, availableMovies, completeMovies);
+    }
+
+    private boolean checkout(String title, Role user, Map<String, Item> availableItems, Map<String, Item> completeItems) {
+        if (availableItems.containsKey(title)) {
+            availableItems.remove(title);
+            completeItems.get(title).checkout(user);
             return true;
         }
         return false;
     }
 
-    public boolean checkoutMovie(String title, Role user) {
-        if (availableMovies.containsKey(title)) {
-            availableMovies.remove(title);
-            completeMovies.get(title).checkout(user);
-            return true;
-        }
-        return false;
-    }
 
     public boolean checkin(String title) {
         if (completeBooks.containsKey(title)) {
@@ -56,10 +56,10 @@ public class Inventory {
         return false;
     }
 
-    public List<Book> getBookBorrowerList() {
-        LinkedList<Book> borrowedBooks = new LinkedList<>();
+    public List<Item> getBookBorrowerList() {
+        LinkedList<Item> borrowedBooks = new LinkedList<>();
 
-        for (Book book : completeBooks.values()) {
+        for (Item book : completeBooks.values()) {
             if (!book.isCheckedin()) {
                 borrowedBooks.add(book);
             }

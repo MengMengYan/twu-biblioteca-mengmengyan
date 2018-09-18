@@ -10,7 +10,7 @@ public abstract class Item {
         isCheckedin = true;
     }
 
-    abstract String getDetails();
+    public abstract String getDetails();
 
     public boolean checkout(Role user) {
         if (isCheckedin) {

@@ -13,13 +13,13 @@ public class InventoryTest {
 
     @Before
     public void setUp(){
-        HashMap<String,Book> books = new HashMap<String, Book>();
+        HashMap<String, Item> books = new HashMap<>();
         Book book1 = new Book("Title1", "Author1", 2042);
         Book book2 = new Book("Title2", "Author2", 1098);
         books.put("Title1", book1);
         books.put("Title2", book2);
 
-        HashMap<String, Movie> movies = new HashMap<>();
+        HashMap<String, Item> movies = new HashMap<>();
         Movie movie1 = new Movie("Title1", 19, "Director1");
         Movie movie2 = new Movie("Title2", 444, "Director2");
         movies.put("Title1", movie1);

@@ -2,7 +2,7 @@ package com.twu.biblioteca.roles;
 
 public interface Role {
 
-    public String getUsername();
+    String getUsername();
 
-    public RoleType getRoleType();
+    RoleType getRoleType();
 }
