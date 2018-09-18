@@ -34,6 +34,7 @@ public class MenuCommandTest {
                 "Checkout book [BOOK TITLE] - checkout a book\n" +
                 "Checkout movie [BOOK TITLE] - checkout a movie\n" +
                 "Checkin [BOOK TITLE] - checkin a book\n" +
+                "User Information - show user information\n" +
                 "Quit - Quits Biblioteca", this.testee.execute(null, null, new User("111-1111")));
     }
 

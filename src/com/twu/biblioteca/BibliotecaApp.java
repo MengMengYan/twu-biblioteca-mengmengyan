@@ -30,7 +30,7 @@ public class BibliotecaApp {
 
             String possibleBookInput = checkForCheckinOrOut(input);
 
-            command = create(input);
+            command = create(input.toLowerCase());
 
             if (command.getClass().equals(QuitCommand.class)) {
                 continueRunning = false;
@@ -49,7 +49,7 @@ public class BibliotecaApp {
 
         String username = getStringInput(in);
 
-        System.out.println("Please, enter your password");
+        System.out.print("Please, enter your password");
         String password = getStringInput(in);
 
         Login login = new Login();
@@ -66,7 +66,6 @@ public class BibliotecaApp {
     static String checkForCheckinOrOut(String input) {
         if (input.contains("check")) {
             String[] singleInputs = input.split("\\s+");
-            System.out.println(input);
             if (singleInputs.length > 2) {
                 return singleInputs[2];
             }
@@ -94,6 +93,8 @@ public class BibliotecaApp {
             return new CheckinBookCommand();
         } else if (input.contains("list borrowers")) {
             return new ListBookBorrowerCommand();
+        } else if (input.contains("user information")) {
+            return new UserInformationCommand();
         } else {
             return new InvalidCommand();
         }
@@ -111,6 +112,6 @@ public class BibliotecaApp {
     }
 
     private static String getStringInput(Scanner in) {
-        return in.nextLine().trim().toLowerCase();
+        return in.nextLine().trim();
     }
 }
