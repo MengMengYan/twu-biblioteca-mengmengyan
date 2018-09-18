@@ -1,5 +1,6 @@
 package com.twu.biblioteca.itemSystem;
 
+import com.twu.biblioteca.roles.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,27 +29,27 @@ public class InventoryTest {
 
     @Test
     public void testSuccessfulBookCheckout() {
-        assertEquals(true, inventory.checkoutBook("Title1"));
+        assertEquals(true, inventory.checkoutBook("Title1", new User("111-1111")));
     }
 
     @Test
     public void testUnsuccessfulBookCheckout() {
-        assertEquals(false, inventory.checkoutBook("Title3"));
+        assertEquals(false, inventory.checkoutBook("Title3", new User("111-1111")));
     }
 
     @Test
     public void testSuccessfulMovieCheckout() {
-        assertEquals(true, inventory.checkoutMovie("Title1"));
+        assertEquals(true, inventory.checkoutMovie("Title1", new User("111-1111")));
     }
 
     @Test
     public void testUnsuccessfulMovieCheckout() {
-        assertEquals(false, inventory.checkoutMovie("Title3"));
+        assertEquals(false, inventory.checkoutMovie("Title3", new User("111-1111")));
     }
 
     @Test
     public void testSuccessfulBookReturn() {
-        inventory.checkoutBook("Title1");
+        inventory.checkoutBook("Title1", new User("111-1111"));
         assertEquals(true, inventory.checkin("Title1"));
     }
 

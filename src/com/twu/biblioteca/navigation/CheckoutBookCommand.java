@@ -10,7 +10,7 @@ public class CheckoutBookCommand implements Command {
         if (role.getRoleType().equals(RoleType.GUEST))
             return "Please, log in!";
 
-        boolean checkedOut = inventory.checkoutBook(title);
+        boolean checkedOut = inventory.checkoutBook(title, role);
         if (checkedOut) {
             return "Thank you! Enjoy the book";
         }

@@ -11,7 +11,7 @@ public class CheckoutMovieCommand implements Command {
             return "Please, log in!";
 
 
-        boolean checkedOut = inventory.checkoutMovie(title);
+        boolean checkedOut = inventory.checkoutMovie(title, role);
         if (checkedOut) {
             return "Thank you! Enjoy the movie";
         }

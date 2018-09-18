@@ -24,7 +24,7 @@ public class MenuCommand implements Command {
                         "Checkout book [BOOK TITLE] - checkout a book\n" +
                         "Checkout movie [BOOK TITLE] - checkout a movie\n" +
                         "Checkin [BOOK TITLE] - checkin a book\n" +
-                        "List Checkouts - Lists all checked out books\n" +
+                        "List Borrowers - Lists books with respective borrowers\n" +
                         "Quit - Quits Biblioteca";
             default:
                 return "Menu - Opens menu\n" +

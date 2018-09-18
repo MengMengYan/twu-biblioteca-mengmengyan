@@ -92,6 +92,8 @@ public class BibliotecaApp {
             return new CheckoutMovieCommand();
         } else if (input.contains("checkin")) {
             return new CheckinBookCommand();
+        } else if (input.contains("list borrowers")) {
+            return new ListBookBorrowerCommand();
         } else {
             return new InvalidCommand();
         }

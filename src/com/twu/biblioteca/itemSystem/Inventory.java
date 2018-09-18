@@ -1,8 +1,8 @@
 package com.twu.biblioteca.itemSystem;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import com.twu.biblioteca.roles.Role;
+
+import java.util.*;
 
 public class Inventory {
     private Map<String, Book> availableBooks;
@@ -30,17 +30,19 @@ public class Inventory {
         return availableMovies.values();
     }
 
-    public boolean checkoutBook(String title) {
+    public boolean checkoutBook(String title, Role user) {
         if (availableBooks.containsKey(title)) {
             availableBooks.remove(title);
+            completeBooks.get(title).checkout(user);
             return true;
         }
         return false;
     }
 
-    public boolean checkoutMovie(String title) {
+    public boolean checkoutMovie(String title, Role user) {
         if (availableMovies.containsKey(title)) {
             availableMovies.remove(title);
+            completeMovies.get(title).checkout(user);
             return true;
         }
         return false;
@@ -52,5 +54,17 @@ public class Inventory {
             return true;
         }
         return false;
+    }
+
+    public List<Book> getBookBorrowerList() {
+        LinkedList<Book> borrowedBooks = new LinkedList<>();
+
+        for (Book book : completeBooks.values()) {
+            if (!book.isCheckedin()) {
+                borrowedBooks.add(book);
+            }
+        }
+
+        return borrowedBooks;
     }
 }

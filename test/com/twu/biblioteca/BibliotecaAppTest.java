@@ -72,6 +72,13 @@ public class BibliotecaAppTest {
     }
 
     @Test
+    public void testListBorrowers() {
+        Command outputCommand = BibliotecaApp.create("list borrowers");
+
+        assertEquals(ListBookBorrowerCommand.class, outputCommand.getClass());
+    }
+
+    @Test
     public void testSuccessfulTitleCheck() {
         assertEquals("title1", BibliotecaApp.checkForCheckinOrOut("checkout book title1"));
     }
