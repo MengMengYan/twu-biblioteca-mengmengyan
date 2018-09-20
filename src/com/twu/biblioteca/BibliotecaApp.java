@@ -44,6 +44,16 @@ public class BibliotecaApp {
         }
     }
 
+    static String checkForCheckinOrOut(String input) {
+        if (input.contains("check")) {
+            String[] singleInputs = input.split("\\s+");
+            if (singleInputs.length > 2) {
+                return singleInputs[2];
+            }
+        }
+        return "";
+    }
+
     private static Role loginRole(Scanner in) {
         Role currentRole;
         System.out.print("Please, enter your username: ");
@@ -62,16 +72,6 @@ public class BibliotecaApp {
         System.out.println(command.execute(null, null, role));
         command = new MenuCommand();
         System.out.println(command.execute(null, null, role));
-    }
-
-    static String checkForCheckinOrOut(String input) {
-        if (input.contains("check")) {
-            String[] singleInputs = input.split("\\s+");
-            if (singleInputs.length > 2) {
-                return singleInputs[2];
-            }
-        }
-        return "";
     }
 
     static Command create(String input) {

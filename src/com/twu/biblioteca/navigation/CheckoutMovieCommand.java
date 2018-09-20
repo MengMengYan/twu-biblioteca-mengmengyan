@@ -9,7 +9,7 @@ public class CheckoutMovieCommand implements Command {
     public String execute(Inventory inventory, String title, Role role) {
         if (role.getRoleType().equals(RoleType.GUEST)
                 || role.getRoleType().equals(RoleType.LIBRARIAN))
-            return "Please, log in!";
+            return "Please, log in as a user!";
 
 
         boolean checkedOut = inventory.checkoutMovie(title, role);
